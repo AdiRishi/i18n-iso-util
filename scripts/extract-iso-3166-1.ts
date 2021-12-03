@@ -1,9 +1,14 @@
+import fs from 'fs';
+import path from 'path';
 import playwright, { Page } from 'playwright';
 
 const ISO_HOME_PAGE = 'https://www.iso.org/obp/ui/#home';
 const ISO_SEARCH_PAGE = 'https://www.iso.org/obp/ui/#search';
 const NEXT_BUTTON_LOCATOR = ':nth-match(div[role="button"]:has-text("Next"), 1)';
 const DATA_NAVLINK_LOCATOR = ':nth-match(table, 2) >> tr[role=row] >> :nth-match(td, 1) >> button';
+const OFFICIAL_CODES_LABEL_LOCATOR = 'div[role="button"]:has-text("Officially assigned codes")';
+
+const finalData: unknown[] = [];
 
 const main = async () => {
   const browser = await playwright.chromium.launch({ headless: true });
@@ -32,6 +37,8 @@ const main = async () => {
   }
 
   browser.close();
+
+  await saveFinalData();
 };
 
 const navigateToIso3166CountryCodes = async (page: Page) => {
@@ -55,14 +62,15 @@ const iterateOverCountryTable = async (page: Page) => {
     await countryNavlinkLocator.nth(i).click();
     await page.locator('.core-view-header').waitFor();
     const countryInfo = await extractCountryInfo(page);
-    console.log(countryInfo);
+    finalData.push(countryInfo);
+    console.log(`Processed country ${countryInfo.shortNameLowerCase}`);
     await page.locator('[class="v-caption v-caption-closable"]').nth(1).locator('span').click();
-    await page.locator(NEXT_BUTTON_LOCATOR).waitFor();
+    await page.locator(OFFICIAL_CODES_LABEL_LOCATOR).waitFor();
   }
 };
 
 const extractCountryInfo = async (page: Page) => {
-  const countryInfo: { [key: string]: string } = {};
+  const countryInfo: { [key: string]: unknown } = {};
   const htmlTableKeyMappings: { [key: string]: string } = {
     'Alpha-2 code': 'alpha2',
     'Short name': 'shortName',
@@ -83,10 +91,27 @@ const extractCountryInfo = async (page: Page) => {
     const value = await valueLocator.innerText();
 
     if (name in htmlTableKeyMappings) {
-      countryInfo[htmlTableKeyMappings[name]] = value;
+      countryInfo[htmlTableKeyMappings[name]] = value.trim();
     }
   }
   return countryInfo;
+};
+
+const saveFinalData = async () => {
+  const jsonString = JSON.stringify(finalData);
+  const fileStarter = `
+  export type CountryData = {
+    alpha2: string;
+    alpha3: string;
+    shortName: string;
+    shortNameLowerCase: string;
+    fullName: string;
+    numericCode: string;
+  };
+  const data: CountryData[] = ${jsonString};
+  export default data;
+  `.trim();
+  fs.writeFileSync(path.resolve(__dirname, '../src/iso-3166-1.ts'), fileStarter);
 };
 
 main();

@@ -28,7 +28,7 @@
   },
   "scripts": {
     "clean": "gulp clean",
-    "generate:iso3166": "ts-node scripts/extract-iso-3166-1.ts",
+    "generate:iso3166": "ts-node scripts/extract-iso-3166-1.ts && yarn prettier",
     "prebuild": "yarn clean",
     "build": "tsc",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx && prettier --check .",
