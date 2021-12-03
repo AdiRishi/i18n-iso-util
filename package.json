@@ -1,0 +1,24 @@
+{
+  "name": "i18n-iso-util",
+  "version": "1.0.0",
+  "description": "A utility library for ISO-3166 and ISO 4217 codes",
+  "main": "main.js",
+  "repository": "git@github.com:AdiRishi/i18n-iso-util.git",
+  "author": "Adishwar Rishi <adiswa123@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.5.0",
+    "@typescript-eslint/parser": "5.5.0",
+    "eslint": "8.3.0",
+    "eslint-config-prettier": "8.3.0",
+    "husky": "7.0.4",
+    "prettier": "2.5.0",
+    "typescript": "4.5.2"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx && prettier --check .",
+    "lint:fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx && prettier --write .",
+    "prettier": "prettier --write .",
+    "prepare": "husky install"
+  }
+}
