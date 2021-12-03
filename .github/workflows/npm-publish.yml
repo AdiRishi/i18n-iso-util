@@ -34,7 +34,8 @@ jobs:
       - run: yarn install
       - run: yarn build
       - uses: JS-DevTools/npm-publish@v1
-        with: ${{ secrets.NPM_TOKEN }}
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
       - if: steps.publish.outputs.type != 'none'
         run: |
           echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
