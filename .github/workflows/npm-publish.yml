@@ -18,8 +18,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: npm run lint
-      - run: npm run build
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn build
 
   publish-npm:
     needs: build
@@ -30,8 +31,8 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm run lint
-      - run: npm run build
+      - run: yarn install
+      - run: yarn build
       - uses: JS-DevTools/npm-publish@v1
         with: ${{ secrets.NPM_TOKEN }}
       - if: steps.publish.outputs.type != 'none'
