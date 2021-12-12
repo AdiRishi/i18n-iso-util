@@ -1,6 +1,6 @@
 {
   "name": "i18n-iso-util",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A utility library for ISO-3166 and ISO 4217 codes",
   "homepage": "https://github.com/AdiRishi/i18n-iso-util",
   "bugs": {

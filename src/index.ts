@@ -76,7 +76,7 @@ export function alpha3ToFullName(alpha3Code: string) {
     return undefined;
   }
 
-  return countryData.fullName;
+  return countryData.shortNameLowerCase;
 }
 
 export function fullNameToAlpha3(fullName: string) {
