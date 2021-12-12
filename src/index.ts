@@ -1,4 +1,4 @@
-import countryData, { CountryData } from './iso-3166-1';
+import countryData, { CountryData } from './iso-3166-1.data';
 
 class CodeLengthMismatchError extends Error {
   code: string;
