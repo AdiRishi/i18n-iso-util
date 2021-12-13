@@ -52,7 +52,6 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx && prettier --check .",
     "lint:fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx && prettier --write .",
     "prettier": "prettier --write .",
-    "prepare": "husky install",
-    "prepublish": "yarn lint && yarn build"
+    "prepare": "husky install"
   }
 }
