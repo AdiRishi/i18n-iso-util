@@ -7,7 +7,7 @@ import {
   alpha3ToFullName,
   fullNameToAlpha2,
   fullNameToAlpha3,
-} from './index';
+} from '../src';
 
 describe('Test country functions', () => {
   const indianObject = {
