@@ -17,9 +17,24 @@ npm install i18n-iso-util # Typescript types are included
 
 ## Getting Started
 
+The `getCountry` function accepts alpha-2, alpha-3 and full name search input.
+
+```typescript
+import { getCountry } from 'i18n-iso-util';
+
+/**
+ * Accepts alpha-2, alpha-3 or full name input
+ * NOTE: All inputs are compared via a case sensitive exact string match
+ */
+getCountry('IN'); // => {alpha2: 'IN', alpha3: 'IND', fullName: 'India', numericCode: '356'}
+getCountry('IND'); // => {alpha2: 'IN', alpha3: 'IND', fullName: 'India', numericCode: '356'}
+getCountry('India'); // => {alpha2: 'IN', alpha3: 'IND', fullName: 'India', numericCode: '356'}
+```
+
+For those who want to lookup codes with a specific use-case in mind, the library exposes the following functions.
+
 ```typescript
 import {
-  getCountry,
   alpha2ToAlpha3,
   alpha2ToFullName,
   alpha3ToAlpha2,
@@ -30,10 +45,6 @@ import {
 
 // NOTE: All inputs are compared via a case sensitive exact string match
 
-/**
- * Accepts alpha-2, alpha-3 or full name input
- */
-getCountry('IND'); // => {alpha2: 'IN', alpha3: 'IND', fullName: 'India', numericCode: '356'}
 alpha2ToAlpha3('IN'); // => IND
 alpha2ToFullName('IN'); // => India
 alpha3ToAlpha2('IND'); // => IN
@@ -58,6 +69,7 @@ These codes are maintained by the [International Organisation for Standardizatio
 ## Upcoming Features
 
 - Performance improvements for country lookup
+- Fuzzy matching for full country names and case insensitive lookups
 - Integrate [ISO-3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) to support country subdivisions
 - Integrate [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html) currency codes and suport lookup and standardized currencies by country
 - Integrate [IANA time zone database](https://en.wikipedia.org/wiki/Tz_database) by parsing data directly from [the source](https://www.iana.org/time-zones). Support lookup by country code
