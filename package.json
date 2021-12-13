@@ -1,12 +1,11 @@
 {
   "name": "i18n-iso-util",
   "version": "1.3.0",
-  "description": "A utility library for ISO-3166 and ISO 4217 codes",
+  "description": "A utility library for ISO-3166 codes",
   "homepage": "https://github.com/AdiRishi/i18n-iso-util",
   "keywords": [
     "i18n",
     "iso-3166-1",
-    "iso-4217",
     "alpha-2",
     "alpha-3",
     "countries"

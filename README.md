@@ -1,6 +1,6 @@
 # i18n-iso-util
 
-> A utility library for ISO-3166 and ISO 4217 codes
+> A utility library for ISO-3166 codes
 
 [![npm version](https://img.shields.io/npm/v/i18n-iso-util?style=flat-square)](https://www.npmjs.com/package/i18n-iso-util)
 [![npm monthly downloads](https://img.shields.io/npm/dw/i18n-iso-util)](https://www.npmjs.com/package/i18n-iso-util)
