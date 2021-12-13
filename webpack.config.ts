@@ -12,6 +12,8 @@ const config: webpack.Configuration = {
       name: 'i18nIsoUtil',
       type: 'umd',
     },
+    // globalObject is set to 'self' by default which does not work in Node.js environments
+    globalObject: 'this',
   },
   resolve: {
     extensions: ['.ts', '.js'],
