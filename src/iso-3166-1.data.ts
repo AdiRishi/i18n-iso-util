@@ -1,4 +1,4 @@
-export type CountryData = {
+export type RawCountryData = {
   alpha2: string;
   alpha3: string;
   shortName: string;
@@ -6,7 +6,7 @@ export type CountryData = {
   fullName: string;
   numericCode: string;
 };
-const data: CountryData[] = [
+const data: RawCountryData[] = [
   {
     alpha2: 'AF',
     shortName: 'AFGHANISTAN',

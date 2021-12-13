@@ -12,7 +12,7 @@ import {
 describe('Test country functions', () => {
   const indianObject = {
     alpha2: 'IN',
-    shortNameLowerCase: 'India',
+    fullName: 'India',
     alpha3: 'IND',
     numericCode: '356',
   };
@@ -58,7 +58,7 @@ describe('Test country functions', () => {
     });
 
     it('Correctly returns full name', () => {
-      expect(alpha2ToFullName('IN')).toBe(indianObject.shortNameLowerCase);
+      expect(alpha2ToFullName('IN')).toBe(indianObject.fullName);
     });
 
     it('Returns undefined on a miss', () => {
@@ -86,7 +86,7 @@ describe('Test country functions', () => {
     });
 
     it('Correctly returns full name', () => {
-      expect(alpha3ToFullName('IND')).toBe(indianObject.shortNameLowerCase);
+      expect(alpha3ToFullName('IND')).toBe(indianObject.fullName);
     });
 
     it('Returns undefined on a miss', () => {

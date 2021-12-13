@@ -1,4 +1,4 @@
-import countryData, { CountryData } from './iso-3166-1.data';
+import countryData, { RawCountryData } from './iso-3166-1.data';
 
 export class CodeLengthMismatchError extends Error {
   code: string;
@@ -9,7 +9,14 @@ export class CodeLengthMismatchError extends Error {
   }
 }
 
-function searchKeyInData(key: keyof CountryData, value: string) {
+export type CountryData = {
+  alpha2: string;
+  alpha3: string;
+  fullName: string;
+  numericCode: string;
+};
+
+function _searchKeyInData(key: keyof RawCountryData, value: string): RawCountryData | undefined {
   for (const data of countryData) {
     if (data[key] === value) {
       return data;
@@ -18,8 +25,20 @@ function searchKeyInData(key: keyof CountryData, value: string) {
   return undefined;
 }
 
-export function getCountry(country: string) {
-  let searchKey: keyof CountryData;
+function _convertRawCountryData(rawData?: RawCountryData): CountryData | undefined {
+  if (rawData) {
+    return {
+      alpha2: rawData.alpha2,
+      alpha3: rawData.alpha3,
+      fullName: rawData.shortNameLowerCase,
+      numericCode: rawData.numericCode,
+    };
+  }
+  return undefined;
+}
+
+export function getCountry(country: string): CountryData | undefined {
+  let searchKey: keyof RawCountryData;
   if (country.length === 3) {
     searchKey = 'alpha3';
   } else if (country.length === 2) {
@@ -28,14 +47,14 @@ export function getCountry(country: string) {
     searchKey = 'shortNameLowerCase';
   }
 
-  return searchKeyInData(searchKey, country);
+  return _convertRawCountryData(_searchKeyInData(searchKey, country));
 }
 
 export function alpha2ToAlpha3(alpha2Code: string) {
   if (alpha2Code.length !== 2) {
     throw new CodeLengthMismatchError();
   }
-  const countryData = searchKeyInData('alpha2', alpha2Code);
+  const countryData = _searchKeyInData('alpha2', alpha2Code);
   if (!countryData) {
     return undefined;
   }
@@ -47,7 +66,7 @@ export function alpha2ToFullName(alpha2Code: string) {
   if (alpha2Code.length !== 2) {
     throw new CodeLengthMismatchError();
   }
-  const countryData = searchKeyInData('alpha2', alpha2Code);
+  const countryData = _searchKeyInData('alpha2', alpha2Code);
   if (!countryData) {
     return undefined;
   }
@@ -59,7 +78,7 @@ export function alpha3ToAlpha2(alpha3Code: string) {
   if (alpha3Code.length !== 3) {
     throw new CodeLengthMismatchError();
   }
-  const countryData = searchKeyInData('alpha3', alpha3Code);
+  const countryData = _searchKeyInData('alpha3', alpha3Code);
   if (!countryData) {
     return undefined;
   }
@@ -71,7 +90,7 @@ export function alpha3ToFullName(alpha3Code: string) {
   if (alpha3Code.length !== 3) {
     throw new CodeLengthMismatchError();
   }
-  const countryData = searchKeyInData('alpha3', alpha3Code);
+  const countryData = _searchKeyInData('alpha3', alpha3Code);
   if (!countryData) {
     return undefined;
   }
@@ -83,7 +102,7 @@ export function fullNameToAlpha2(fullName: string) {
   if (fullName.length <= 3) {
     throw new CodeLengthMismatchError();
   }
-  const countryData = searchKeyInData('shortNameLowerCase', fullName);
+  const countryData = _searchKeyInData('shortNameLowerCase', fullName);
   if (!countryData) {
     return undefined;
   }
@@ -95,7 +114,7 @@ export function fullNameToAlpha3(fullName: string) {
   if (fullName.length <= 3) {
     throw new CodeLengthMismatchError();
   }
-  const countryData = searchKeyInData('shortNameLowerCase', fullName);
+  const countryData = _searchKeyInData('shortNameLowerCase', fullName);
   if (!countryData) {
     return undefined;
   }
