@@ -1,6 +1,6 @@
 import countryData, { CountryData } from './iso-3166-1.data';
 
-class CodeLengthMismatchError extends Error {
+export class CodeLengthMismatchError extends Error {
   code: string;
 
   constructor(message?: string) {
@@ -79,18 +79,6 @@ export function alpha3ToFullName(alpha3Code: string) {
   return countryData.shortNameLowerCase;
 }
 
-export function fullNameToAlpha3(fullName: string) {
-  if (fullName.length <= 3) {
-    throw new CodeLengthMismatchError();
-  }
-  const countryData = searchKeyInData('shortNameLowerCase', fullName);
-  if (!countryData) {
-    return undefined;
-  }
-
-  return countryData.alpha3;
-}
-
 export function fullNameToAlpha2(fullName: string) {
   if (fullName.length <= 3) {
     throw new CodeLengthMismatchError();
@@ -101,4 +89,16 @@ export function fullNameToAlpha2(fullName: string) {
   }
 
   return countryData.alpha2;
+}
+
+export function fullNameToAlpha3(fullName: string) {
+  if (fullName.length <= 3) {
+    throw new CodeLengthMismatchError();
+  }
+  const countryData = searchKeyInData('shortNameLowerCase', fullName);
+  if (!countryData) {
+    return undefined;
+  }
+
+  return countryData.alpha3;
 }
