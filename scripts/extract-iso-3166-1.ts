@@ -100,7 +100,7 @@ const extractCountryInfo = async (page: Page) => {
 const saveFinalData = async () => {
   const jsonString = JSON.stringify(finalData);
   const fileStarter = `
-  export type CountryData = {
+  export type RawCountryData = {
     alpha2: string;
     alpha3: string;
     shortName: string;
@@ -108,10 +108,10 @@ const saveFinalData = async () => {
     fullName: string;
     numericCode: string;
   };
-  const data: CountryData[] = ${jsonString};
+  const data: RawCountryData[] = ${jsonString};
   export default data;
   `.trim();
-  fs.writeFileSync(path.resolve(__dirname, '../src/iso-3166-1.ts'), fileStarter);
+  fs.writeFileSync(path.resolve(__dirname, '../src/iso-3166-1.data.ts'), fileStarter);
 };
 
 main();

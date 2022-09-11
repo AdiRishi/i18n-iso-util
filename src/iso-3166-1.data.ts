@@ -1824,14 +1824,6 @@ const data: RawCountryData[] = [
     numericCode: '788',
   },
   {
-    alpha2: 'TR',
-    shortName: 'TURKEY',
-    shortNameLowerCase: 'Turkey',
-    fullName: 'the Republic of Turkey',
-    alpha3: 'TUR',
-    numericCode: '792',
-  },
-  {
     alpha2: 'TM',
     shortName: 'TURKMENISTAN',
     shortNameLowerCase: 'Turkmenistan',
@@ -1854,6 +1846,14 @@ const data: RawCountryData[] = [
     fullName: '',
     alpha3: 'TUV',
     numericCode: '798',
+  },
+  {
+    alpha2: 'TR',
+    shortName: 'TÜRKİYE',
+    shortNameLowerCase: 'Türkiye',
+    fullName: 'the Republic of Türkiye',
+    alpha3: 'TUR',
+    numericCode: '792',
   },
   {
     alpha2: 'UG',
