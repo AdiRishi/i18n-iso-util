@@ -121,3 +121,11 @@ export function fullNameToAlpha3(fullName: string) {
 
   return countryData.alpha3;
 }
+
+export function getAllAlpha3Codes() {
+  return countryData.map((data) => data.alpha3);
+}
+
+export function getAllAlpha2Codes() {
+  return countryData.map((data) => data.alpha2);
+}

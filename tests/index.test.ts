@@ -7,6 +7,8 @@ import {
   alpha3ToFullName,
   fullNameToAlpha2,
   fullNameToAlpha3,
+  getAllAlpha2Codes,
+  getAllAlpha3Codes,
 } from '../src';
 
 describe('Test country functions', () => {
@@ -123,6 +125,24 @@ describe('Test country functions', () => {
 
     it('Returns undefined on a miss', () => {
       expect(fullNameToAlpha3('Indian')).toBeUndefined();
+    });
+  });
+
+  describe('Test getAllAlpha2Codes', () => {
+    it('Returns all alpha2 codes', () => {
+      const allCodes = getAllAlpha2Codes();
+      for (const code of allCodes) {
+        expect(code).toHaveLength(2);
+      }
+    });
+  });
+
+  describe('Test getAllAlpha3Codes', () => {
+    it('Returns all alpha3 codes', () => {
+      const allCodes = getAllAlpha3Codes();
+      for (const code of allCodes) {
+        expect(code).toHaveLength(3);
+      }
     });
   });
 });
