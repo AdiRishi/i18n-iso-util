@@ -1208,14 +1208,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack@npm:5.28.4":
-  version: 5.28.4
-  resolution: "@types/webpack@npm:5.28.4"
+"@types/webpack@npm:5.28.5":
+  version: 5.28.5
+  resolution: "@types/webpack@npm:5.28.5"
   dependencies:
     "@types/node": "npm:*"
     tapable: "npm:^2.2.0"
     webpack: "npm:^5"
-  checksum: ebc3b3c0d528a7565ceeaf382b3eb61beb2323a7428931c817b079b45c565b4b6f16ad7b187eef6b55c4ac699107425bc17af367c7c70cbb908b2f3dbe205aec
+  checksum: d1fec1f678af79dd0d84333740bdd2ce128c7f4fd1f8d14bb0ec0f4c5af70580af68350f677e3696003a8cb2e2b5f510f8c0ed7ee5ad2bc7874c87f80ecd7c8d
   languageName: node
   linkType: hard
 
@@ -3038,7 +3038,7 @@ __metadata:
   dependencies:
     "@types/jest": "npm:29.5.8"
     "@types/node": "npm:20.9.0"
-    "@types/webpack": "npm:5.28.4"
+    "@types/webpack": "npm:5.28.5"
     "@typescript-eslint/eslint-plugin": "npm:6.10.0"
     "@typescript-eslint/parser": "npm:6.10.0"
     eslint: "npm:8.53.0"
