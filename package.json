@@ -25,7 +25,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@types/jest": "29.5.11",
+    "@types/jest": "29.5.12",
     "@types/node": "20.11.15",
     "@types/webpack": "5.28.5",
     "@typescript-eslint/eslint-plugin": "6.20.0",
