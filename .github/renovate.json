@@ -3,6 +3,7 @@
   "extends": ["config:recommended"],
   "dependencyDashboard": true,
   "rangeStrategy": "bump",
+  "enabled": false,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
