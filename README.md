@@ -8,6 +8,9 @@
 [![Build](https://github.com/AdiRishi/i18n-iso-util/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/AdiRishi/i18n-iso-util/actions/workflows/npm-publish.yml)
 [![Coverage](https://codecov.io/gh/AdiRishi/i18n-iso-util/branch/master/graph/badge.svg?token=6NO2IVSSO0)](https://codecov.io/gh/AdiRishi/i18n-iso-util)
 
+> [!WARNING]
+> This project is temporarily on hold. I plan on re-writing this as a utility package combined with a worker for use within Cloudflare
+
 ## Install
 
 ```sh
